@@ -7,6 +7,15 @@ function modelready() {
   classifier.classify(gotresult);
 }
 
-function gotresult(error, result) {
-  console.log("Sucessfully Got The Result👍");
+function gotresult(error, results) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(results);
+    document.getElementById("result_label").innerHTML = "I Can Hear - " + results[0].label;
+    acc = (results[0].confidence * 100).toFixed(2);
+    document.getElementById("result_confidence").innerHTML = "I Am " + acc + "% Confident";
+    //checking
+
+  }
 }
